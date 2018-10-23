@@ -1,0 +1,13 @@
+list only the names that match the indicated pattern.
+1. all hidden names
+    .??*
+2. ends with a digit
+    *[[:digit:]]
+3. contains at least one character that is not alphabetic
+    *[![:alph:]]*
+4. starts with a dash
+    -*    ls -- -*
+5. contains an asterisk, dash, question mark, or comma
+    *[-*?,]*  ls -- *[-*?,]*
+6. is in a subdirectory
+    */*
