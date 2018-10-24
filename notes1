@@ -21,11 +21,17 @@ part 2
 3. output lines 20-30 of the file passwd with the correct line numbers (starting at 20)
     cat -n | head -30 passwd | tail -11
 4. how many unique GIDs are there in the file passwd?
-    
+    cut -d: -f4 passwd | uniq | wc -l
 5. how many lines in the file passwd have a directory of / (the root of the filesystem)?
+    cut -d: -f6 passwd | grep -wc /
 6. how many lines in passwd have an account that ends with a number?
+    cut -d: -f2 passwd | grep -c *[[:digit:]]
 7. create a new file gids that contains the GID and group_name from the group file in that order
 separated by a tab
+    cut -d: -f1,3 group | tr ":" "\t" > gids
 8. sort the passwd file on the GID. For lines with identical GIDs, sort it on the UID.
+    sort -t":" -k4n -k3n passwd
 9. output the current users default GID from the output of the id command.
+    id -g
 10.output the ip address of hills from the output of the command ifconfig bond0
+    ifconfig ens192 | grep -w inet | cut -d=' ' -f2
