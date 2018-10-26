@@ -35,3 +35,28 @@ separated by a tab
     id -g
 10.output the ip address of hills from the output of the command ifconfig bond0
     ifconfig ens192 | grep -w inet | cut -d=' ' -f2
+
+part 3
+1. output the lines from the passwd file whose GID is 574
+    :574: prededed by 2 groups of <0 or more characters except : >:<0 or more characters except : >
+        grep -E '^([^:]*:[^:]*){2}:574:' passwd
+    or
+    574: prededed by 3 groups of <0 or more characters except : >: 
+        grep -E '^([^:]*:){3}574:' passwd
+        grep -E '[[:digit:]]:574:' passwd
+2. The GID 574 must be changed to 579. Output the lines from the passwd file changed as indicated.
+(Only output the lines that changed)
+    match the lines with the UID column with at least one digit next to ':' and the GID column has 574
+    keep the UID column the same (\1) and replace the rest with 579
+        sed -n 's/\([[:digit:]]:\)574:/\1579:/p' passwd 
+3. output the lines from the passwd file whose UID is less than 1000? greater than 1000?
+    match the lines with the UID values that are 1 to 3 digits
+        grep -E ':[[:digit:]]{1,3}:[[:digit:]]' passwd
+    match the lines with the UID values that are 3 or more digits
+        grep -E ':[[:digit:]]{3,}:[[:digit:]]' passwd
+4. how many groups in the group file begin with c3?
+5. how many groups in the group file have a single member in their member_list? (the
+member_list is comma-separated)
+6. output the group file after deleting the passwd field
+7. how many users are members of at least one group in the group file (unique users)
+8. output the ip address of hills from the output of the command ifconfig bond0 using sed.
