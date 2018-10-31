@@ -55,8 +55,44 @@ part 3
     match the lines with the UID values that are 3 or more digits
         grep -E ':[[:digit:]]{3,}:[[:digit:]]' passwd
 4. how many groups in the group file begin with c3?
+    grep -c '^c3*' group
 5. how many groups in the group file have a single member in their member_list? (the
 member_list is comma-separated)
+    count the lines that match the last column with any number of characters except ','
+    grep -cE ':[^:,]+$' group
 6. output the group file after deleting the passwd field
 7. how many users are members of at least one group in the group file (unique users)
 8. output the ip address of hills from the output of the command ifconfig bond0 using sed.
+
+command substitution
+1. Output a message that indicates what directory you are in.
+    echo "my current directory: $(pwd)"
+2. Output a message that indicates today's date. 
+    echo "date: $(date)"
+3. Using the two variables and command substitution, output a message like:
+   30 + 50 = 80 
+
+   num1=30 num2=50
+   echo $num1 + $num2 = $(($num1 + $num2))
+
+4. output a message like:
+    The remainder of num2/num1 is 20 
+
+    echo The remainder of num2/num1 is $(($num2 % $num1))
+
+5. Retrieve the single line from the file /etc/passwd that contains your login information and place it
+    in a variable pword
+
+    pword=$(grep jlg /etc/passwd)
+
+6. output a message that announces what your login shell is. 
+
+    echo "your login shell is $(echo $pword | cut -d: -f7)"
+
+7. output the message
+    <the current user>'s home directory is '<the current user's home dir>' 
+
+    user=$(echo $pword | cut -d: -f1)
+    home=$(echo $pword | cut -d: -f6)
+    echo "${user}'s home directory is $home"
+
