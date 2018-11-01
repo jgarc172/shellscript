@@ -68,7 +68,7 @@ command substitution
 1. Output a message that indicates what directory you are in.
     echo "my current directory: $(pwd)"
 2. Output a message that indicates today's date. 
-    echo "date: $(date)"
+    echo today is $(echo $(date) | cut -d" " -f1,2,3,6)
 3. Using the two variables and command substitution, output a message like:
    30 + 50 = 80 
 
@@ -96,3 +96,21 @@ command substitution
     home=$(echo $pword | cut -d: -f6)
     echo "${user}'s home directory is $home"
 
+8.  time=$(echo $(date) | cut -d" " -f4 | cut -d: -f1)
+    echo "There are $((24 - $time)) hours until midnight"
+
+9. Output a message that indicates how many lines in
+   Hired_Data have the Job Manager 
+
+    mgrs=$(cut -d: -f3 Hired_Data | grep -c Manager)
+    echo There are $mgrs managers
+
+10. Output a message that indicates today's date in the format
+    Fri 30 July
+    
+    wkday=$(echo $(date) | cut -d" " -f1)
+    month=$(echo $(date) | cut -d" " -f2)
+    day=$(echo $(date) | cut -d" " -f3)
+    echo "Today's date is $wkday $day $month"
+
+11. 
