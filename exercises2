@@ -1,0 +1,195 @@
+
+
+Week Two Exercises
+
+1. Given the following files in your directory, when you type in the commands given, what will be output?
+
+feb96 jan12.02 jan19.02 jan26.02 jan5.02 jan95 jan96 jan97 jan98 mar98 memo1 memo10 memo2 memo2.sv
+
+a. ls
+
+feb96     jan19.02  jan5.02   jan96     jan98     memo1     memo2
+jan12.02  jan26.02  jan95     jan97     mar98     memo10    memo2.sv
+
+b. echo *
+
+feb96 jan12.02 jan19.02 jan26.02 jan5.02 jan95 jan96 jan97 jan98 mar98 memo1 memo10 memo2 memo2.sv
+
+c. echo m[a-df-z]*
+
+mar98
+
+d. echo jan*
+
+jan12.02 jan19.02 jan26.02 jan5.02 jan95 jan96 jan97 jan98
+
+e. echo ?????
+
+feb96 jan95 jan96 jan97 jan98 mar98 memo1 memo2
+
+f. echo jan?? feb?? mar??
+
+jan95 jan96 jan97 jan98 feb96 mar98
+
+g. echo *[!0-9]
+
+memo2.sv
+
+h. echo [A-Z]*
+
+[A-Z]*
+
+i. echo *.*
+
+jan12.02 jan19.02 jan26.02 jan5.02 memo2.sv
+
+j. echo 02*
+
+02*
+
+k. echo [fjm][ae][bnr]*
+
+feb96 jan12.02 jan19.02 jan26.02 jan5.02 jan95 jan96 jan97 jan98 mar98
+
+2. What will be output from hills when you type the following commands into the console?
+
+a. ls | wc -l
+
+
+
+b. who | wc -l
+
+
+c. ls *.c | wc -l
+
+
+
+d. who | sort
+
+
+
+
+e. cp memo1 ..
+
+
+f. rm ???
+
+
+
+g. mv progs/* /users/steve/backup
+
+
+
+h. rm *.o
+
+
+g. cd; pwd
+
+
+h. plotdata 2>errors &
+
+
+
+3. What do the following expressions mean?
+
+
+a. x* 
+
+
+b. xx* 
+
+
+c. x\{1,5\} 
+
+
+d. x\{5,\} 
+
+
+e. x\{10\} 
+
+
+f. [0,9] 
+
+
+g. [0,9] 
+
+
+h. [0,9][0,9][0,9] 
+
+
+i. [0-9]\{3\} 
+
+
+j. [0-9]\{3,5\} 
+
+
+
+k. [0-9]\{1,3\},[0-9]\{3\} 
+
+
+l. ^\... 
+
+
+
+m. [A-Za-z_][A-Za-z_0-9]* 
+
+
+
+n. \([A-Za-z0-9]\{1,\}\)\1 
+
+
+
+o. ^Begin$ 
+
+
+
+p. ^\(.\).*\1$ 
+
+
+4. What do the following commands output? 
+
+
+a. who | grep 'mary' 
+
+
+b. who | grep '^mary ' 
+
+
+c. grep '[Uu]nix' ch?/* 
+	
+
+d. ls -l | sort +4n 
+
+
+e. sed '/^$/d' text > text.out 
+
+
+f. sed 's/\([Uu]nix\)/\1(TM)/g' text > text.out 
+
+
+
+g. date | cut -c12-16 
+
+
+h. date | cut -c5-11,25- | sed 's/\([0-9]\{1,2\}\)/\1,/' 
+
+
+5. Give the Unix commands for the following
+
+a.Find all logged-in users with usernames of at least four characters.
+
+
+b.Find all users on your system whose user ids are greater than 99.
+
+
+c.Find the number of users on your system whose user ids are greater than 99.
+
+
+
+d.List all the files in your directory in decreasing order of file size.
+
+
+
+
+
+
