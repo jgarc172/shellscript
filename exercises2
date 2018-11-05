@@ -4,190 +4,237 @@ Week Two Exercises
 
 1. Given the following files in your directory, when you type in the commands given, what will be output?
 
-feb96 jan12.02 jan19.02 jan26.02 jan5.02 jan95 jan96 jan97 jan98 mar98 memo1 memo10 memo2 memo2.sv
+   feb96 jan12.02 jan19.02 jan26.02 jan5.02 jan95 jan96 jan97 jan98 mar98 memo1 memo10 memo2 memo2.sv
 
 a. ls
 
-feb96     jan19.02  jan5.02   jan96     jan98     memo1     memo2
-jan12.02  jan26.02  jan95     jan97     mar98     memo10    memo2.sv
+   feb96     jan19.02  jan5.02   jan96     jan98     memo1     memo2
+   jan12.02  jan26.02  jan95     jan97     mar98     memo10    memo2.sv
 
 b. echo *
 
-feb96 jan12.02 jan19.02 jan26.02 jan5.02 jan95 jan96 jan97 jan98 mar98 memo1 memo10 memo2 memo2.sv
+   feb96 jan12.02 jan19.02 jan26.02 jan5.02 jan95 jan96 jan97 jan98 mar98 memo1 memo10 memo2 memo2.sv
 
 c. echo m[a-df-z]*
 
-mar98
+   mar98
 
 d. echo jan*
 
-jan12.02 jan19.02 jan26.02 jan5.02 jan95 jan96 jan97 jan98
+   jan12.02 jan19.02 jan26.02 jan5.02 jan95 jan96 jan97 jan98
 
 e. echo ?????
 
-feb96 jan95 jan96 jan97 jan98 mar98 memo1 memo2
+   feb96 jan95 jan96 jan97 jan98 mar98 memo1 memo2
 
 f. echo jan?? feb?? mar??
 
-jan95 jan96 jan97 jan98 feb96 mar98
+   jan95 jan96 jan97 jan98 feb96 mar98
 
 g. echo *[!0-9]
 
-memo2.sv
+   memo2.sv
 
 h. echo [A-Z]*
 
-[A-Z]*
+   [A-Z]*
 
 i. echo *.*
 
-jan12.02 jan19.02 jan26.02 jan5.02 memo2.sv
+   jan12.02 jan19.02 jan26.02 jan5.02 memo2.sv
 
 j. echo 02*
 
-02*
+   02*
 
 k. echo [fjm][ae][bnr]*
 
-feb96 jan12.02 jan19.02 jan26.02 jan5.02 jan95 jan96 jan97 jan98 mar98
+   feb96 jan12.02 jan19.02 jan26.02 jan5.02 jan95 jan96 jan97 jan98 mar98
 
 2. What will be output from hills when you type the following commands into the console?
 
 a. ls | wc -l
-
-
+   
+   23
 
 b. who | wc -l
 
+   19
 
 c. ls *.c | wc -l
 
-
+   ls: cannot access *.c: No such file or directory
+   0
 
 d. who | sort
 
-
-
+abrick   pts/19       2018-10-22 15:33 (70.36.145.73)
+abrick   pts/25       2018-11-03 23:14 (70.36.145.73)
+amittal  pts/0        2018-10-30 17:41 (64.125.46.186)
+amittal  pts/1        2018-10-29 10:18 (64.125.46.186)
+amittal  pts/22       2018-10-30 16:46 (64.125.46.186)
+amittal  pts/5        2018-11-02 04:32 (75.18.249.132)
+amittal  pts/6        2018-10-30 09:49 (64.125.46.186)
+awong    pts/12       2018-11-02 18:29 (172.18.28.246)
+craut    pts/9        2018-11-04 08:30 (75.57.10.171)
+fpacific pts/32       2018-11-03 21:08 (173.228.31.194)
+jgarc172 pts/3        2018-11-04 08:33 (73.93.143.123)
+mtoren   pts/24       2018-11-03 16:56 (52.119.118.188)
+rseth    pts/13       2018-11-03 18:46 (171.68.250.206)
+rseth    pts/15       2018-10-28 10:50 (171.68.250.206)
+rseth    pts/17       2018-10-28 10:52 (171.68.250.206)
+shaycraf pts/8        2018-11-04 08:17 (108.232.115.50)
+ssilverh pts/11       2018-11-04 08:35 (107.142.32.35)
+ssilverh pts/16       2018-11-04 08:35 (107.142.32.35)
 
 e. cp memo1 ..
 
+   cp: cannot stat ‘memo1’: No such file or directory
 
 f. rm ???
 
-
+rm: cannot remove ‘bin’: Is a directory
+rm: cannot remove ‘etc’: Is a directory
+rm: cannot remove ‘old’: Is a directory
 
 g. mv progs/* /users/steve/backup
 
-
+   mv: cannot stat ‘progs/*’: No such file or directory
 
 h. rm *.o
 
+   rm: cannot remove ‘*.o’: No such file or directory
 
 g. cd; pwd
 
+   /students/jgarc172
 
 h. plotdata 2>errors &
 
-
+   [1] 15185
 
 3. What do the following expressions mean?
 
 
 a. x* 
 
+   matches text with one or more 'x's.
 
 b. xx* 
 
+   matches text with two or more 'x's
 
 c. x\{1,5\} 
 
+   matches text with 1 to 5 instances of x
 
 d. x\{5,\} 
 
+   matches text with 5 or more instances of x
 
 e. x\{10\} 
 
+   matches text with 10 instances of x
 
 f. [0,9] 
 
+   matches text with one character that is 0 or ',' or 9
 
 g. [0,9] 
 
+   matches text with one character that is 0 or ',' or 9
 
 h. [0,9][0,9][0,9] 
 
+   matches text with 3 adjacent characters that are 0 or ',' or 9 
 
 i. [0-9]\{3\} 
-
+   in BRE,
+   matches text with 3 adjacent digits
 
 j. [0-9]\{3,5\} 
-
-
+   in BRE,
+   matches text with 3 to 5 digits adjacent digits
 
 k. [0-9]\{1,3\},[0-9]\{3\} 
-
+   in BRE
+   matches text with one to three digits followed by "," followed by 3 digits
 
 l. ^\... 
 
-
+   matches text that starts with '.' followed by at least two characters
 
 m. [A-Za-z_][A-Za-z_0-9]* 
 
-
+   matches text with at least one letter or '_' followed by 0 or more 
+   alphanumeric characters or '_'s.
 
 n. \([A-Za-z0-9]\{1,\}\)\1 
 
-
+   matches text with repeated groups of one or more alphanumeric characters
 
 o. ^Begin$ 
 
-
+   matches text contains only 'Begin'
 
 p. ^\(.\).*\1$ 
 
+   matches text with the first character appearing also at the end
 
 4. What do the following commands output? 
 
 
 a. who | grep 'mary' 
 
+   users who are logged in and whose name contain 'mary'
 
 b. who | grep '^mary ' 
 
+   The one user whose name is 'mary'
 
 c. grep '[Uu]nix' ch?/* 
 	
+   in files under the directories whose name is three characters long and start with 'ch' matches
+   lines of text that contain the words 'unix' or 'Unix'.
 
 d. ls -l | sort +4n 
 
+   lists files and directories in the current directory sorted by size (5th column)
 
 e. sed '/^$/d' text > text.out 
 
+   copy contents of file 'text' to file 'text.out' except for empty lines
 
 f. sed 's/\([Uu]nix\)/\1(TM)/g' text > text.out 
 
-
+   copy file 'text' to file 'text.out' and replace instances of 'unix' with 'unix(TM)' and 'Unix' with 
+   'Unix(TM)'
 
 g. date | cut -c12-16 
 
+   display the current time in hours and minutes
 
 h. date | cut -c5-11,25- | sed 's/\([0-9]\{1,2\}\)/\1,/' 
 
+   display today's date as 'mon day, year'
 
 5. Give the Unix commands for the following
 
 a.Find all logged-in users with usernames of at least four characters.
 
+   who | grep -E '^[[:alnum:]]{4,}'
 
 b.Find all users on your system whose user ids are greater than 99.
 
+   grep -E ':x:[[:digit:]]{3,}:[[:digit:]]' /etc/passwd
 
 c.Find the number of users on your system whose user ids are greater than 99.
 
-
+   grep -E ':x:[[:digit:]]{3,}:[[:digit:]]' /etc/passwd | wc -l
 
 d.List all the files in your directory in decreasing order of file size.
 
+   ls -lSr
 
 
 
