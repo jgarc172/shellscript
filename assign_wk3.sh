@@ -1,17 +1,21 @@
 #!/bin/bash
 echo "Welcome $USER"
 echo "You are logged in to $HOSTNAME"
+count=$(last -2 $LOGNAME | wc -l )
+if [ $count -eq 2 ] 
+then 
+    line=$(sed )
+else 
+        echo "a is not equal" 
+fi 
 
-- The date and time you last logged in, not including this time. (Try last -2 $LOGNAME (If this is the first time 
-  you have logged in to this system, it is acceptable for the output to indicate the last login is the current login session.))
-
-algorithm:
-    . identify the date and time the user last logged in
-    . if this is the first login session identify the date and time of this loggin session
-    . display the date and time
 pseudocode:
-    . set login_date = last login date
-    . if login_date is null or empty, set login_date = current login date
+    . set count = the number of lines in the command (last -2 $LOGNAME)
+    . if count == 2
+        set line = second line
+      else
+        set line = first line
+    . set login_date = the range of columns 4-7
     . set msg = "You last logged in on login_date"
     . print msg
 
