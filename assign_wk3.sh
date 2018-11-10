@@ -31,9 +31,9 @@ for dir in $dirs; do echo $dir; done
 
 echo "enter three integers separated by a space"
 read int1 int2 int3
-if [[ ! ("$int1" =~ ^-?[[:digit:]]+$) ]]; then echo "$int1 is not a digit"; fi
-if [[ ! ("$int2" =~ ^-?[[:digit:]]+$) ]]; then echo "$int2 is not a digit"; fi
-if [[ ! ("$int3" =~ ^-?[[:digit:]]+$) ]]; then echo "$int3 is not a digit"; fi
+if [[ ! ("$int1" =~ ^-?[[:digit:]]+$) ]]; then echo "$int1 is not a digit"; exit 1; fi
+if [[ ! ("$int2" =~ ^-?[[:digit:]]+$) ]]; then echo "$int2 is not a digit"; exit 1; fi
+if [[ ! ("$int3" =~ ^-?[[:digit:]]+$) ]]; then echo "$int3 is not a digit"; exit 1; fi
 
 # 3. Finds the largest and smallest number of the three integers.
 
