@@ -3,7 +3,7 @@
 echo "Welcome $USER"
 
 # Display the host computer you are logged in.
-echo "You are logged in to $HOSTNAME"
+echo "You are logged in to host $HOSTNAME"
 
 # Display the date and time you last logged in, not including this time.
 (last -2 $LOGNAME | grep $LOGNAME | tr -s " " | cut -d" " -f4-7)
@@ -16,20 +16,27 @@ line2=$(echo "$tmp" | sed -n '2p')
 
 # Displays how many local (non-environment) and environment variables you have defined.
 
-count_env=$(env | wc -l)
-count_all=$(set | wc -l)
+count_env=$(env | wc -l | tr -d "[:blank:]")
+count_all=$(set | wc -l | tr -d "[:blank:]")
 count_non=$(( $count_all - $count_env ))
-echo "Variables - non-environment: $count_non , environment: $count_env"
+echo "Your session currently has $count_env environment variables and $count_non non-environment variables."
 
 # Displays the directories in your search path, in the order they are searched, one-per-line.
 
+echo "These are the directories in your \$PATH"
 dirs=$(echo $PATH | tr ":" " ")
 for dir in $dirs; do echo $dir; done
 
-2. Takes three valid integers from the user. Make sure they are valid.
+# 2. Takes three valid integers from the user. Make sure they are valid.
 
-3. Finds the largest and smallest number of the three integers.
+echo "enter three integers separated by a space"
+read int1 int2 int3
+if [[ ! ("$int1" =~ ^-?[[:digit:]]+$) ]]; then echo "$int1 is not a digit"; fi
+if [[ ! ("$int2" =~ ^-?[[:digit:]]+$) ]]; then echo "$int2 is not a digit"; fi
+if [[ ! ("$int3" =~ ^-?[[:digit:]]+$) ]]; then echo "$int3 is not a digit"; fi
 
-4. Performs the following on each combination of two from the three numbers and display the results; Addition, subtraction, multiplication and division.
+# 3. Finds the largest and smallest number of the three integers.
 
-5. Reports that the script is done and exits.
+# 4. Performs the following on each combination of two from the three numbers and display the results; Addition, subtraction, multiplication and division.
+
+# 5. Reports that the script is done and exits.

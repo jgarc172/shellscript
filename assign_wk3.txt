@@ -64,12 +64,24 @@ pseudocode:
 algorithm:
     * create a string list from $PATH and replace ":" with a space
     * for each directory in the list 
-    * display the directory
+        - display the directory
 pseudocode:
     * set dirs = print $PATH | replace ":" with a space using 'tr'
     * for dir in $dirs
     *   print dir
 2. Takes three valid integers from the user. Make sure they are valid.
+
+algorithm:
+    * prompt the user to enter three integers
+    * read the entered values and assign them to variables
+    * for each variable validate that the value is an integers
+    * display to the user when any of the values is not an integers
+pseudocode:
+    * print "enter three integers separated by a space"
+    * read int1 int2 int3
+    INT if int1 doesn't match 1 or more digits with or without '-' then
+            print "int1 is not a valid integer"
+    repeat step INT
 
 3. Finds the largest and smallest number of the three integers.
 
