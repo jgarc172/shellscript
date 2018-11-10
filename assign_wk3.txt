@@ -2,9 +2,6 @@
 
 - A welcome message indicating your name (the user).
 
-basic tools: 
-    * environment or shell variables identifying the user:
-           $LOGNAME, $USER, $HOME
 algorithm:
     * identify the current user using any available variable
     * display a welcome message to the current user
@@ -15,9 +12,6 @@ pseudocode:
 
 - The host computer you are logged in.
 
-basic tools: 
-    * environment or shell variables identifying the host computer:
-           $HOSTNAME
 algorithm:
     * identify the name of the host computer using any available variable
     * display the name of the host computer
@@ -29,21 +23,7 @@ pseudocode:
 - The date and time you last logged in, not including this time. (Try last -2 $LOGNAME (If this is the first time 
   you have logged in to this system, it is acceptable for the output to indicate the last login is the current login session.))
 
-basic tools: 
-    * commands:
-        last - prints listing of last logged in sessions with columns identifying the users, date, time, etc.
-               The listing will include the current session for the current user.  So the result for the
-               current user will include one or more lines.  All is needed for the last is the last 2 
-               sessions.  The output includes a footer
-        grep - prints lines matching a pattern
-        cut  - removes specified sections (columns/fields) from each line of input
-        sed  - filters and transforms a line of input
-
-    * variables:
-        $LOGNAME - logged in user's name
-
 aalgorithm:
-tmp="$(last -2 $LOGNAME | grep $LOGNAME | tr -s " " | cut -d" " -f4-7)"
     * obtain the two most recent log in sessions for the current user using the command 'last'
     * to remove the footer of 'last' select lines matching the current user using 'grep'
     * to clean the columns, replace whitespace with a single space using 'tr'
@@ -53,23 +33,42 @@ tmp="$(last -2 $LOGNAME | grep $LOGNAME | tr -s " " | cut -d" " -f4-7)"
     * if there are two lines then select the second line using 'sed'
     * display a message that includes the date and time
 pseudocode:
-    * sessions = last two login sessions for current user
-    * sessions = $sessions | select lines that contain $LOGNAME with 'grep'
-    * sessions = $sessions | remove whitespace with 'tr'
-    * sessions = $sessions | select date time fields with 'cut'
-    * count = $sessions | count lines with 'wc'
-    * set count = the number of lines in the command (last -2 $LOGNAME)
+    * sessions = last two login sessions for current user using 'last'
+    * sessions = print $sessions | select lines that contain $LOGNAME with 'grep'
+    * sessions = print $sessions | remove whitespace with 'tr'
+    * sessions = print $sessions | select date time fields with 'cut'
+    * count = print $sessions | count lines with 'wc'
     * if count == 1
-        set line = first line
+        login_date = print $sessions | select first line using 'sed'
       else
-        set line = second line
-    * set login_date = the range of columns 4-7 from line
+        login_date = print $sessions | select second line using 'sed'
     * set msg = "You last logged in on login_date"
     * print msg
 
 - Displays how many local (non-environment) and environment variables you have defined. (This requires arithmetic.)
-    
+
+algorithm:
+    1 count the number of variables in the output of 'env' or 'printenv'
+    2 count the number of variables in the output of 'set'
+    3 subtract the count in step 1 from the count in step 2
+    4 display a message that includes the counts in step 3 and step 1
+pseudocode:
+    * set count_env = the number of lines from 'env'
+    * set count_all = the number of lines from 'set'
+    * set count_non = count_all - count_env
+    * set msg = "Variables - non-environment: $count_non , environment: $count_env"
+    * print msg
+
 - Displays the directories in your search path, in the order they are searched, one-per-line.
+
+algorithm:
+    * create a string list from $PATH and replace ":" with a space
+    * for each directory in the list 
+    * display the directory
+pseudocode:
+    * set dirs = print $PATH | replace ":" with a space using 'tr'
+    * for dir in $dirs
+    *   print dir
 2. Takes three valid integers from the user. Make sure they are valid.
 
 3. Finds the largest and smallest number of the three integers.
