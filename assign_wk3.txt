@@ -2,44 +2,73 @@
 
 - A welcome message indicating your name (the user).
 
+basic tools: 
+    * environment or shell variables identifying the user:
+           $LOGNAME, $USER, $HOME
 algorithm:
-    . identify the current user
-    . display a welcome message to the current user
+    * identify the current user using any available variable
+    * display a welcome message to the current user
 pseudocode:
-    . set var = current user
-    . set msg = "Welcome var"
-    . print msg
+    * use $LOGNAME
+    * set msg = "Welcome $LOGNAME"
+    * print msg
 
-- The host you are logged in on.
+- The host computer you are logged in.
 
+basic tools: 
+    * environment or shell variables identifying the host computer:
+           $HOSTNAME
 algorithm:
-    . identify the name of the host computer
-    . display the name of the host computer
+    * identify the name of the host computer using any available variable
+    * display the name of the host computer
 pseudocode:
-    . set host = host computer
-    . set msg = "You are logged in to host"
-    . print msg
+    * use $HOSTNAME
+    * set msg = "You are logged in to $HOSTNAME"
+    * print msg
 
 - The date and time you last logged in, not including this time. (Try last -2 $LOGNAME (If this is the first time 
   you have logged in to this system, it is acceptable for the output to indicate the last login is the current login session.))
 
-algorithm:
-    . identify the date and time the user last logged in from the command (last -2 $LOGNAME).  The 
-      second line would contain the date and time the user last logged in.
-    . if there is only one line from (last -2 $LOGNAME) then select the first line.
-    . obtain the date and time from the columns in the line
-    . display the date and time
+basic tools: 
+    * commands:
+        last - prints listing of last logged in sessions with columns identifying the users, date, time, etc.
+               The listing will include the current session for the current user.  So the result for the
+               current user will include one or more lines.  All is needed for the last is the last 2 
+               sessions.  The output includes a footer
+        grep - prints lines matching a pattern
+        cut  - removes specified sections (columns/fields) from each line of input
+        sed  - filters and transforms a line of input
+
+    * variables:
+        $LOGNAME - logged in user's name
+
+aalgorithm:
+tmp="$(last -2 $LOGNAME | grep $LOGNAME | tr -s " " | cut -d" " -f4-7)"
+    * obtain the two most recent log in sessions for the current user using the command 'last'
+    * to remove the footer of 'last' select lines matching the current user using 'grep'
+    * to clean the columns, replace whitespace with a single space using 'tr'
+    * select the columns that contain the date and time using 'cut'
+    * count the number of lines using 'wc'
+    * if there is only one line then select the first line using 'sed'
+    * if there are two lines then select the second line using 'sed'
+    * display a message that includes the date and time
 pseudocode:
-    . set count = the number of lines in the command (last -2 $LOGNAME)
-    . if count == 2
-        set line = second line
-      else
+    * sessions = last two login sessions for current user
+    * sessions = $sessions | select lines that contain $LOGNAME with 'grep'
+    * sessions = $sessions | remove whitespace with 'tr'
+    * sessions = $sessions | select date time fields with 'cut'
+    * count = $sessions | count lines with 'wc'
+    * set count = the number of lines in the command (last -2 $LOGNAME)
+    * if count == 1
         set line = first line
-    . set login_date = the range of columns 4-7 from line
-    . set msg = "You last logged in on login_date"
-    . print msg
+      else
+        set line = second line
+    * set login_date = the range of columns 4-7 from line
+    * set msg = "You last logged in on login_date"
+    * print msg
 
 - Displays how many local (non-environment) and environment variables you have defined. (This requires arithmetic.)
+    
 - Displays the directories in your search path, in the order they are searched, one-per-line.
 2. Takes three valid integers from the user. Make sure they are valid.
 

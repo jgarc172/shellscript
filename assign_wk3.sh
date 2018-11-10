@@ -1,6 +1,18 @@
 #!/bin/bash
+# Display a welcome message indicating your name (the user).
 echo "Welcome $USER"
+
+# Display the host computer you are logged in.
 echo "You are logged in to $HOSTNAME"
+
+# Display the date and time you last logged in, not including this time.
+(last -2 $LOGNAME | grep $LOGNAME | tr -s " " | cut -d" " -f4-7)
+tmp="$(last -2 $LOGNAME | grep $LOGNAME | tr -s " " | cut -d" " -f4-7)"
+echo "$tmp"
+count=$(echo "$tmp" | wc -l)
+line1=$(echo "$tmp" | sed -n '1p')
+line2=$(echo "$tmp" | sed -n '2p')
+
 count=$(last -2 $LOGNAME | wc -l )
 if [ $count -eq 2 ] 
 then 
