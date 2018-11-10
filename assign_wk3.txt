@@ -85,6 +85,18 @@ pseudocode:
 
 3. Finds the largest and smallest number of the three integers.
 
+algorithm:
+    * assign $int1 to min and max
+    * compare min and max with $int2 and assign $int2 to either min or max
+    * repeat comparison with $int2
+    * display the values of min and max
+pseudocode:
+    * min=$int1 max=$int1
+    * if $int2 < min then min=$int2
+    * if $int2 > max then max=$int2
+    * if $int3 < min then min=$int3
+    * if $int3 > max then max=$int3
+
 4. Performs the following on each combination of two from the three numbers and display the results; Addition, subtraction, multiplication and division.
 
 5. Reports that the script is done and exits.

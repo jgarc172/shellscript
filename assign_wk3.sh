@@ -37,6 +37,15 @@ if [[ ! ("$int3" =~ ^-?[[:digit:]]+$) ]]; then echo "$int3 is not a digit"; fi
 
 # 3. Finds the largest and smallest number of the three integers.
 
+min=$int1
+max=$int1
+if [[ $int2 -lt $min ]]; then min=$int2; fi
+if [[ $int2 -gt $max ]]; then max=$int2; fi
+if [[ $int3 -lt $min ]]; then min=$int3; fi
+if [[ $int3 -gt $max ]]; then max=$int3; fi
+echo "The largest value is $max and the smallest value is $min"
+
+
 # 4. Performs the following on each combination of two from the three numbers and display the results; Addition, subtraction, multiplication and division.
 
 # 5. Reports that the script is done and exits.
