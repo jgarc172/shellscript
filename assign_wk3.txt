@@ -23,7 +23,7 @@ pseudocode:
 - The date and time you last logged in, not including this time. (Try last -2 $LOGNAME (If this is the first time 
   you have logged in to this system, it is acceptable for the output to indicate the last login is the current login session.))
 
-aalgorithm:
+algorithm:
     * obtain the two most recent log in sessions for the current user using the command 'last'
     * to remove the footer of 'last' select lines matching the current user using 'grep'
     * to clean the columns, replace whitespace with a single space using 'tr'
@@ -97,6 +97,28 @@ pseudocode:
     * if $int3 < min then min=$int3
     * if $int3 > max then max=$int3
 
-4. Performs the following on each combination of two from the three numbers and display the results; Addition, subtraction, multiplication and division.
+4. Performs the following on each combination of two from the three numbers and display the results: 
+   Addition, subtraction, multiplication and division.
+
+algorithm:
+    * for each pair of integers:
+        * display the two pairs of integers
+        * calculate and display the results for
+            addition, subtraction, multiplication, and division
+pseudocode:
+    1 print "pairs: $int1 and $int2"
+    2 print "addition: $int1 + $int2"
+    3 print "subtraction: $int1 - $int2"
+    4 print "multiplication: $int1 * $int2"
+    5 print "division: $int1 / $int2"
+    6 repeat steps 1 to 5 for pairs $int1 and $int3
+    7 repeat steps 1 to 5 for pairs $int2 and $int3
 
 5. Reports that the script is done and exits.
+
+algorithm:
+    * display the end of the Reports
+    * exit with a status of success
+pseudocode:
+    * print "Report completed."
+    * exit 0
