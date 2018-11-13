@@ -1,23 +1,87 @@
 Exercises:
-1. Output cow found if the file whose path is in the variable file contains the string cow. You can
+1. Output "cow found" if the file whose path is in the variable file contains the string cow. You can
 try this on the file /pub/cs/jstrick2/cs160b/samples/Data/u2
 
-2. Output there any subdirectories if the current directory has subdirectories. 
+    If the file $file contains the word "cow", then display "cow found".
+
+file=~/samples/Data/u2
+if grep -qi "cow" "$file"; then 
+    echo "cow found"
+fi
+
+2. Output "there are subdirectories" if the current directory has subdirectories. 
+
+    for each file in the current directory
+        if the file is a directory
+            display "there are subdirectories"
+            break
+
+files=$(ls)
+for file in $files; do 
+    if [ -d "$file" ]; then 
+        echo "there are subdirectories"
+        break
+    fi
+done
 
 3. If you used an if statement to do #1, redo it using &&. If you used &&, redo it using an if
 statement.
 
+grep -qi "cow" "$file" && echo "cow found"
+
 4. Repeat #3 for question #2.
 
+files=$(ls)
+for file in $files; do 
+    [ -d "$file" ] && echo "there are subdirectories" && break
+done 
+
 5. Remove the file $file if it is empty (be careful how you use this!)
+
+    if the size of $file is not greater than 0, then remove
+
+! [ -s "$file" ] && rm $file
+
+touch emptyfile
+file=emptyfile
+! [ -s "$file" ] && rm $file
+rm: remove regular empty file 'emptyfile'? y
 
 6. Output the word writeable if the current directory is writeable by you. Test this command
 when connected to several directories such as your home directory and the system directory /bin
 
+    if the current directory is writable and the current owner owns the current directory, then display "writable"
+        
+[ -w . -a -O . ] && echo "writable"
+
+$ cd ~
+$ [ -w . -a -O . ] && echo "writable"
+writable
+$ cd /bin/
+$ [ -w . -a -O . ] && echo "writable"
+$ 
+
 7. Output yes if there is a file named foo in the current directory.
+
+(ls | grep -q '^foo$') && echo "yes"
+
+$ (ls | grep -q '^foo$') && echo "yes"
+$
+$ touch foo1
+$ (ls | grep -q '^foo$') && echo "yes"
+$
+$ touch foo
+$ (ls | grep -q '^foo$') && echo "yes"
+yes
+$ 
 
 8. You want to create a file named $$tmp in the current directory. output ok if there is nothing in
 the way and if you can create the file .
+
+    if the current directory is writable and owned by the current user, and
+    if the current directory doesn't contain the file '$$tmp', then display "ok"
+    
+[ -w . -a -O . ] && ! (ls | grep -q '$$tmp') && echo "ok"
 
 9. Output yes if the content of $path 'looks like' an absolute path.
 
