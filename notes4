@@ -1,0 +1,37 @@
+Exercises:
+1. Output cow found if the file whose path is in the variable file contains the string cow. You can
+try this on the file /pub/cs/jstrick2/cs160b/samples/Data/u2
+
+2. Output there any subdirectories if the current directory has subdirectories. 
+
+3. If you used an if statement to do #1, redo it using &&. If you used &&, redo it using an if
+statement.
+
+4. Repeat #3 for question #2.
+
+5. Remove the file $file if it is empty (be careful how you use this!)
+
+6. Output the word writeable if the current directory is writeable by you. Test this command
+when connected to several directories such as your home directory and the system directory /bin
+
+7. Output yes if there is a file named foo in the current directory.
+
+8. You want to create a file named $$tmp in the current directory. output ok if there is nothing in
+the way and if you can create the file .
+
+9. Output yes if the content of $path 'looks like' an absolute path.
+
+10.Output upper if the contents of the variable string starts with an uppercase letter.
+
+11.Output symlink to x, broken symlink or not symlink depending on whether $sym is a
+symbolic link. x is the type of object the link points to and should be file, directory or other.
+
+12.Assuming there are 30 days in each month, output the number of days remaining in this
+month.
+
+13.You want to copy the file $file1 to the directory that $file2 is in. Write a command to do it.
+
+14.Create a simple shell script that takes one command line argument and outputs a message to
+indicate the permissions of the argument's value. It should output a message that indicates
+whether the argument does not exist, or, if it does, whether it is readable, writeable and/or
+executable.
