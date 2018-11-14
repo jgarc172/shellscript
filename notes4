@@ -85,10 +85,20 @@ the way and if you can create the file .
 
 9. Output yes if the content of $path 'looks like' an absolute path.
 
+if echo "$path" | grep -q '^/'; then echo "yes"; fi
+
+(echo "$path" | grep -q '^/') && echo "yes"
+
 10.Output upper if the contents of the variable string starts with an uppercase letter.
+
+if echo "$string" | grep -q '^[A-Z]'; then echo "upper"; fi
+
+(echo "$string" | grep -q '^[A-Z]') && echo "upper"
 
 11.Output symlink to x, broken symlink or not symlink depending on whether $sym is a
 symbolic link. x is the type of object the link points to and should be file, directory or other.
+
+
 
 12.Assuming there are 30 days in each month, output the number of days remaining in this
 month.
