@@ -98,14 +98,38 @@ if echo "$string" | grep -q '^[A-Z]'; then echo "upper"; fi
 11.Output symlink to x, broken symlink or not symlink depending on whether $sym is a
 symbolic link. x is the type of object the link points to and should be file, directory or other.
 
-
+if [ -L "$sym" ]; then 
+    file "$sym" | cut -d: -f2 
+else 
+    echo "not symbolic link" 
+fi
 
 12.Assuming there are 30 days in each month, output the number of days remaining in this
 month.
 
+days=$(date | cut -d" " -f3)
+echo $(( 30 - $days ))
+
 13.You want to copy the file $file1 to the directory that $file2 is in. Write a command to do it.
+
+dir2=$(dirname "$file2")
+cp "$file1" "$dir2"
 
 14.Create a simple shell script that takes one command line argument and outputs a message to
 indicate the permissions of the argument's value. It should output a message that indicates
 whether the argument does not exist, or, if it does, whether it is readable, writeable and/or
 executable.
+
+#!/bin/sh
+#
+if [ "$#" -ne 1 ]; then 
+    echo "Usage: enter one argument that is a file/directory" 
+    exit 1
+fi
+
+echo "file $1"
+[ ! -e "$1" ] && echo " does not exist" && exit 1
+[ -r "$1" ] && echo " is readable"
+[ -w "$1" ] && echo " is writable"
+[ -x "$1" ] && echo " is executable"
+exit 0
