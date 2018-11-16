@@ -133,3 +133,18 @@ echo "file $1"
 [ -w "$1" ] && echo " is writable"
 [ -x "$1" ] && echo " is executable"
 exit 0
+
+Examples
+
+Example 1
+
+myss { -a | -b } file
+
+Write code for this shell script to check its arguments. Your code should output an error if the
+arguments are invalid.
+
+* requires two arguments: option file
+* the first argument, option, must have a value "-a" or "-b"
+* the second argument, file, must be readable
+
+
