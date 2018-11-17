@@ -148,3 +148,42 @@ arguments are invalid.
 * the second argument, file, must be readable
 
 
+Example 2
+
+if [ grep "$user" file1 ]; then
+ echo "'$user' found"
+fi
+
+if $(grep "$user" file1); then
+ echo "'$user' found"
+fi
+
+better
+
+if [ -n "$(grep "$user" file1)" ]; then
+ echo "'$user' found"
+fi
+
+Example 3
+
+test -f "$file" -a -r "$file" && cat "$file" || \
+ echo "$file is not a readable file"
+
+ rewritten with "if"
+
+if test -f "$file" -a -r "$file"; then
+  cat "$file"
+else
+  echo "$file is not a readable file"
+fi
+
+if !grep "JoAnne" $file; then
+ echo "JoAnne was not in $file"
+fi
+
+rewritten with && and or ||
+
+grep "JoAnne" $file || echo "JoAnne was not in $file"
+
+Example 4
+
