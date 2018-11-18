@@ -16,3 +16,5 @@ ofile is
 ofile is /home/jlg/file1
 .../week4/$ ./ifwhile2.sh -z -f -v -o /home/jlg/file1 -t -p
 ofile is /home/jlg/file1
+.../week4/$ ./ifwhile2.sh -z -f -v -o -t -p
+ofile is 
