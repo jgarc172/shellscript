@@ -8,7 +8,7 @@
 # (Hint: you cannot use a for loop. Use a while loop)
 
 # synopsis:
-#   ifwhile1 [-t] [-v] [-f] [-z] [-p] [-o [file]]
+#   ifwhile2 [-t] [-v] [-f] [-z] [-p] [-o [file]]
 
 # algorithm:
 # for each option in the list of options
