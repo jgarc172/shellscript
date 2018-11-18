@@ -1,0 +1,18 @@
+- Runs for script 1: ifwhile1.sh
+
+.../week4/$ ./ifwhile1.sh -t -p -z -f -v
+.../week4/$ ./ifwhile1.sh -t -p -z -f -v -x
+option -x is not allowed
+
+
+- Runs for script 2: ifwhile2.sh
+
+.../week4/$ ./ifwhile2.sh -t -p -z -f -v
+ofile is 
+.../week4/$ ./ifwhile2.sh -t -p -z -f -v -w
+option -w is not allowed
+ofile is 
+.../week4/$ ./ifwhile2.sh -t -p -z -f -v -o /home/jlg/file1
+ofile is /home/jlg/file1
+.../week4/$ ./ifwhile2.sh -z -f -v -o /home/jlg/file1 -t -p
+ofile is /home/jlg/file1
