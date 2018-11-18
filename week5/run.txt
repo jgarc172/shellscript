@@ -1,0 +1,74 @@
+# runs for using casewhile.sh
+
+[jgarc172@hills cs160b]$ ./casewhile.sh 
+
+Please Select:
+1. Host
+2. Last log in
+3. Variables
+4. Path
+
+Enter selection [1-4] > 1
+You are logged in to host hills.ccsf.edu
+[jgarc172@hills cs160b]$ ./casewhile.sh 
+
+Please Select:
+1. Host
+2. Last log in
+3. Variables
+4. Path
+
+Enter selection [1-4] > 2
+You last logged in on Sun Nov 11 22:08
+[jgarc172@hills cs160b]$ ./casewhile.sh 
+
+Please Select:
+1. Host
+2. Last log in
+3. Variables
+4. Path
+
+Enter selection [1-4] > 3
+Your session currently has 22 environment variables and 29 non-environment variables.
+[jgarc172@hills cs160b]$ ./casewhile.sh 
+
+Please Select:
+1. Host
+2. Last log in
+3. Variables
+4. Path
+
+Enter selection [1-4] > 4
+These are the directories in your $PATH
+/usr/local/bin
+/usr/bin
+/usr/local/sbin
+/usr/sbin
+/sbin
+/students/jgarc172/.local/bin
+/students/jgarc172/bin
+[jgarc172@hills cs160b]$ ./casewhile.sh 
+
+Please Select:
+1. Host
+2. Last log in
+3. Variables
+4. Path
+
+Enter selection [1-4] > 5
+no selection
+[jgarc172@hills cs160b]$ 
+
+[jgarc172@hills cs160b]$ ./casewhile.sh -t -p -v -z -f -o file1
+ofile is file1
+
+Please Select:
+1. Host
+2. Last log in
+3. Variables
+4. Path
+
+Enter selection [1-4] > 
+no selection
+[jgarc172@hills cs160b]$ 
+
