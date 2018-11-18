@@ -19,15 +19,14 @@
 #     done
 
 # - if the option is not in the set {-t, -v, -f, -z, -p}
-#     inSet=false
-#     case option in
-#       -t) inSet=true ;;
-#       -v) inSet=true ;;
-#       -f) inSet=true ;;
-#       -z) inSet=true ;;
-#       -p) inSet=true ;;
-#       *) inSet=false ;;
-#     end case
+#
+#			if      option is -t then 
+#     else if option is -v then
+#     else if option is -f then
+#     else if option is -z then
+#     else if option is -p then
+#     else option is not in the set
+#     end if
 
 # - display an error message
 #     echo "option is not allowed"
@@ -35,13 +34,13 @@
 # code implementation
 
 while [ "$#" -gt 0 ]; do
-	case "$1" in
-	-t) ;;
-	-v) ;;
-	-f) ;;
-	-z) ;;
-	-p) ;;
-	*) echo "option $1 is not allowed" ;;
-	esac
+	if   [ "$1" = '-t' ]; then :
+	elif [ "$1" = '-v' ]; then :
+	elif [ "$1" = '-f' ]; then :
+	elif [ "$1" = '-z' ]; then :
+	elif [ "$1" = '-p' ]; then :
+	else
+		echo "option $1 is not allowed"
+	fi
 	shift
 done
