@@ -1,22 +1,34 @@
 #! /bin/sh
 #
-# a shell script with a set of options -t -v -f -z and -p. The options, of course,
-# can appear in any order. Write a sequence of commands for this shell script to examine the
-# command line arguments. For each, set a flag to indicate whether the option was seen.
-# Another argument is of the form: -o outfile. Leave $1 positioned at the first nonoption argument
-# and a variable ofile set to the path given as outfile.
-# (Hint: you cannot use a for loop. Use a while loop)
+# a copy of the ifwhile2.sh script but with the following modifications:
+# - replace the if statements with a case statement
+# - displays a menu of selections
+# - executes the chosen selection as implemented in week2's script
 
 # synopsis:
-#   ifwhile1 [-t] [-v] [-f] [-z] [-p] [-o [file]]
+#   casewhile [-t] [-v] [-f] [-z] [-p] [-o [file]]
+
+# menu:
+# Please Select:
+# 1. Host
+# 2. Last log in
+# 3. Variables
+# 4. Path
+
+# Enter selection [1-4] >
 
 # algorithm:
-# for each option in the list of options
-# 	if the option is in the set {-t, -v, -f, -z, -p}
-# 		indicate whether the option was seen
-# 	if the option is -o [file]
-# 		assign any value in file to the variable ofile
-#		otherwise display an error message
+# - for each option in the list of options
+#     if the option is in the set {-t, -v, -f, -z, -p}
+# 		  indicate the option was seen
+# 	  if the option is -o [file]
+# 		  assign any value in file to the variable ofile
+#		  otherwise display an error message
+# - menu
+#   display the list of selections
+#   read the user's response
+#   if the user's response is in the listed selections
+#     execute the corresponding selection
 
 # pseudocode:
 # - for each option in the list of options
@@ -44,6 +56,28 @@
 # - display an error message
 #     echo "option is not allowed"
 
+# - menu
+#   - display the list of selections
+#     print the following text:
+#     "Please Select:
+#     1. Host
+#     2. Last log in
+#     3. Variables
+#     4. Path"
+
+# - read the user's response
+#   print the prompt "Enter selection [1-4] >"
+#   read sel
+
+# - if the user's response is in the listed selections, execute the selection
+#     case sel in
+#       1) execute 1 ;;
+#       2) execute 2 ;;
+#       3) execute 3 ;;
+#       4) execute 4 ;;
+#       *) igore ;;
+#     end case
+
 # code implementation
 
 ofile=""
@@ -61,4 +95,37 @@ while [ "$#" -gt 0 ]; do
 	esac
 	shift
 done
-echo "ofile is $ofile"
+[ -n "$ofile" ] && echo "ofile is $ofile"
+
+echo "
+Please Select:
+1. Host
+2. Last log in
+3. Variables
+4. Path
+"
+read -p "Enter selection [1-4] > " sel
+
+case $sel in
+1)
+	echo "You are logged in to host $HOSTNAME"
+	;;
+2) 
+  sessions="$(last -2 $LOGNAME | grep $LOGNAME | tr -s " " | cut -d" " -f4-7)"
+  count=$(echo "$sessions" | wc -l)
+  login_date=$(echo "$sessions" | sed -n "${count}p")
+  echo "You last logged in on $login_date"
+  ;;
+3) 
+  count_env=$(env | wc -l | tr -d "[:blank:]")
+  count_all=$(set | wc -l | tr -d "[:blank:]")
+  count_non=$(( $count_all - $count_env ))
+  echo "Your session currently has $count_env environment variables and $count_non non-environment variables."
+  ;;
+4) 
+  echo "These are the directories in your \$PATH"
+  dirs=$(echo $PATH | tr ":" " ")
+  for dir in $dirs; do echo $dir; done
+  ;;
+*) echo "no selection" ;;
+esac
