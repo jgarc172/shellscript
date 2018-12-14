@@ -1,0 +1,45 @@
+Write a script that reads up to 25 integer values of weekly rainfall for a given city.
+The script should then report how many values were read, then calculate the average rainfall.
+The output of the script should display all  rainfall values 
+followed by the amount above or below the average for each week. 
+Finally, the script displays the smallest and largest rainfall values for the year. 
+Please make sure to document all functions of the script and to define results as displayed
+
+- Algorithm
+
+1. read the contents of input file that contains multiple integer values, one for each line.
+2. convert the contents to an array of integer values
+3. calculate the following from the set of integers:
+    a. average
+    b. smallest
+    c. largest
+4. display the following output:
+    a. each integer value followed by its difference from the average value
+    b. the smallest value
+    c. the largest value
+
+- Pseudocode
+
+1. read the input file $1 with a filter such as "cat"
+2. for each line read, append it to an array "rainfall"
+3. call the following functions to obtain the respective values:
+    a. avg = average($rainfall)
+    b. sm = min($rainfall)
+    c. lg = max($rainfall)
+4. display the following values:
+    a. for value in $rainfall
+          print $value ($avg - $value)
+    
+    b. print "smallest: $sm"
+    c. print "largest: $lg"
+
+average function:
+    sum = 0
+    for value in $1
+        sum = sum + $value
+    return $sum
+
+min function:
+    length = size of $1
+    min = $1[0]
+
