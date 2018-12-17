@@ -1,0 +1,50 @@
+#! /bin/bash
+# prints a summary of rainfall values from 
+# data in the input file or from standard in.
+
+# synopsis:
+#     rf [file]
+# file - input file or stdin with integer values, one value per line
+
+# example:
+# ./rf data > output.txt
+
+
+summary() {
+# prints the average, smallest, and largest values
+# in the input array, $@
+
+	local i small large sum
+	small=$1
+	large=$1
+	sum=0
+	#echo $sum $small $large
+
+	for i; do
+		if [ $i -lt $small ]; then
+			small=$i
+		fi
+		if [ $i -gt $large ]; then
+			large=$i
+		fi
+		(( sum = sum + i))
+	done
+
+	echo $(( $sum / $# )) $small $large
+}
+
+values=($(cat $1))
+echo "${#values[@]} values read"
+
+totals=( `summary ${values[@]}` )
+
+echo "Summary:"
+echo "value   from avg"
+echo "-----   --------"
+for i in "${values[@]}"; do
+	diff=$(( $i - ${totals[0]} ))
+	echo " $i       $diff "
+done
+echo "----------------"
+echo "largest:  ${totals[2]}"
+echo "smallest: ${totals[1]}"

@@ -5,6 +5,10 @@ followed by the amount above or below the average for each week.
 Finally, the script displays the smallest and largest rainfall values for the year. 
 Please make sure to document all functions of the script and to define results as displayed
 
+synopsis:
+    rf [file]
+file - input file or stdin with integer values, one line at a time
+
 - Algorithm
 
 1. read the contents of input file that contains multiple integer values, one for each line.
